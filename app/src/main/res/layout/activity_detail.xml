@@ -21,6 +21,7 @@
             <TextView
 
                 android:id="@+id/tv_section"
+                android:tag="@string/sectionTag"
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -46,6 +47,7 @@
 
             <TextView
                 android:id="@+id/tv_status"
+                android:tag="@string/statusTag"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -79,6 +81,7 @@
 
             <TextView
                 android:id="@+id/tv_created"
+                android:tag="@string/createdTag"
 
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
@@ -94,6 +97,7 @@
 
             <TextView
                 android:id="@+id/tv_value_created"
+                android:tag="@string/valueCreatedTag"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -120,6 +124,7 @@
 
             <TextView
                 android:id="@+id/tv_registered"
+                android:tag="@string/registeredTag"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -138,6 +143,7 @@
 
             <TextView
                 android:id="@+id/tv_value_registered"
+                android:tag="@string/valueRegisteredTag"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -165,6 +171,7 @@
 
             <TextView
                 android:id="@+id/tv_deadline"
+                android:tag="@string/deadlineTag"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -183,6 +190,7 @@
 
             <TextView
                 android:id="@+id/tv_value_deadline"
+                android:tag="@string/valueDeadlineTag"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -210,6 +218,7 @@
 
             <TextView
                 android:id="@+id/tv_responsible"
+                android:tag="@string/responsibleTag"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -257,13 +266,14 @@
             <TextView
 
                 android:id="@+id/tv_description"
+                android:tag="@string/descriptionTag"
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
                 android:layout_below="@id/divider5"
 
-                android:text=""
+                android:text="@string/str_description"
 
                 android:layout_marginLeft="@dimen/scrollview_padding"
                 android:layout_marginStart="@dimen/scrollview_padding"
@@ -301,6 +311,5 @@
         </RelativeLayout>
 
     </ScrollView>
-
 
 </RelativeLayout>

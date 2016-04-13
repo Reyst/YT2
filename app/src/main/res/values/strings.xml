@@ -6,15 +6,12 @@
 
     <string name="action_settings">Settings</string>
 
-
-
     <string name="str_created">Created</string>
     <string name="str_registered">Registered</string>
     <string name="str_deadline">Deadline</string>
     <string name="emptyString" translatable="false" />
     <string name="str_image">Image</string>
     <string name="str_responsible">Responsible</string>
-    <string name="valueResponsibleTag">Responsible</string>
     <string name="str_my_wife">My wife</string>
     <string name="str_in_work">In work</string>
     <string name="str_section_value">Dolls</string>
@@ -29,6 +26,26 @@
     <string name="appeals_on_map">Appeals on map</string>
     <string name="login">Login</string>
     <string name="action_filter">Filter</string>
+    <string name="category1">Комунальне господарство</string>
+    <string name="category2">Благоустрій та будівництво</string>
+    <string name="responsibile1">Днiпропетровський МВК</string>
+    <string name="responsibile2">Павлоградськiй МВК</string>
+
+
+    <string name="sectionTag">Section</string>
+    <string name="statusTag">Status</string>
+    <string name="createdTag">Label for created</string>
+    <string name="valueCreatedTag">Created</string>
+    <string name="registeredTag">Label for registered</string>
+    <string name="valueRegisteredTag">Registered</string>
+    <string name="deadlineTag">Label for deadline</string>
+    <string name="valueDeadlineTag">Deadline</string>
+    <string name="descriptionTag">Description</string>
+    <string name="str_description">My wife are selling urgently dolls from the personal collection. Price may be discussed.</string>
+    <string name="responsibleTag">Label for responsible</string>
+    <string name="valueResponsibleTag">Responsible</string>
+    <string name="task_name">SE-19521130</string>
+
 
 
 </resources>
