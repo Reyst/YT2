@@ -49,14 +49,9 @@
             android:layout_marginRight="@dimen/list_item_parent_right_margin"
             android:layout_marginEnd="@dimen/list_item_parent_right_margin"
 
+            style="@style/ListItem.Text.Top"
 
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/list_item_top_text_size"
-            android:alpha="0.87"
-
-            android:lines="2"
-
-            tools:text="QQQQQQQQQQQQQQQQQQ QQQ qqqqqqqqqq"
+            tools:text="QQQQQQQQQQQQQQQQQQ QQQ QQQ qqqqqqqqqqqqqq QQQQQQQ QQQQQQQQQQQ"
             />
 
         <TextView
@@ -77,9 +72,8 @@
 
             android:layout_marginRight="@dimen/list_item_text_right_margin"
             android:layout_marginEnd="@dimen/list_item_text_right_margin"
-            android:lines="1"
-            android:textSize="@dimen/list_item_middle_text_size"
-            android:alpha="0.54"
+
+            style="@style/ListItem.Text.Middle"
 
             tools:text="hfbvskjvsk sjkfhbskvksn ljdnvskbgks sjvksnvks"
             />
@@ -93,14 +87,11 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
 
-
             android:layout_marginRight="@dimen/list_item_days_text_right_margin"
             android:layout_marginEnd="@dimen/list_item_days_text_right_margin"
             android:layout_marginBottom="@dimen/list_item_bottom_text_margin"
 
-            android:textSize="@dimen/list_item_bottom_text_size"
-            android:alpha="0.54"
-            android:textStyle="bold"
+            style="@style/ListItem.Text.Bottom"
 
             tools:text="777 днів"
             />
@@ -121,9 +112,8 @@
             android:layout_marginLeft="@dimen/list_item_text_left_margin"
             android:layout_marginStart="@dimen/list_item_text_left_margin"
             android:layout_marginBottom="@dimen/list_item_bottom_text_margin"
-            android:textSize="@dimen/list_item_bottom_text_size"
-            android:alpha="0.54"
-            android:textStyle="bold"
+
+            style="@style/ListItem.Text.Bottom"
 
             tools:text="Jan. 26, 2016"
              />
@@ -135,7 +125,7 @@
             android:src="@drawable/ic_thumb_up_black_18dp"
             android:contentDescription="@string/emptyString"
 
-            android:alpha="0.19"
+            style="@style/ListItem.ImageView.Likes"
 
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
@@ -161,10 +151,7 @@
             android:layout_marginStart="@dimen/list_item_likes_left_margin"
             android:layout_marginBottom="@dimen/list_item_bottom_text_margin"
 
-            android:textSize="@dimen/list_item_bottom_text_size"
-            android:alpha="0.23"
-            android:textStyle="bold"
-
+            style="@style/ListItem.Text.Likes"
             tools:text="177"
             />
 
@@ -174,7 +161,7 @@
             android:layout_height="@dimen/category_icon_size"
             android:contentDescription="@string/emptyString"
 
-            android:alpha="0.54"
+            style="@style/ListItem.ImageView.Category"
 
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"

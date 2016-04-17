@@ -19,6 +19,7 @@
     <color name="statusBgColor">#f57f17</color>
     <color name="statusColor">@android:color/white</color>
     <color name="leftTextColor">#FF888888</color>
+    <color name="black_87">#de000000</color>
 
 </resources>
 

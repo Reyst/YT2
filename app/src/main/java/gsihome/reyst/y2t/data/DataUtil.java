@@ -42,12 +42,12 @@ public class DataUtil {
                 case 0:
                     category = ctx.getString(R.string.category1);
                     responsible = ctx.getString(R.string.responsibile1);
-                    iconId = R.drawable.icon1;
+                    iconId = R.drawable.icon2;
                     break;
                 case 1:
                     category = ctx.getString(R.string.category2);
                     responsible = ctx.getString(R.string.responsibile2);
-                    iconId = R.drawable.icon2;
+                    iconId = R.drawable.icon1;
                     break;
             }
 
