@@ -29,24 +29,39 @@ import gsihome.reyst.y2t.data.State;
 
 public class ListViewFragment extends Fragment {
 
+    public static final String STR_KEY_STATE = "state";
+
     private ListViewCompat mListView;
     private ListAdapter mAdapter;
 
     private Invoker mInvoker;
 
-    public static Fragment getInstance() {
+    public static Fragment getInstance(State state) {
 
-        return new ListViewFragment();
+        Fragment fragment = new ListViewFragment();
+
+        Bundle params = new Bundle();
+        params.putInt(STR_KEY_STATE, state.getValue());
+
+        fragment.setArguments(params);
+
+        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        List<IssueEntity> data = DataUtil.getModel(getContext(), State.IN_WORK);
+        State state = State.WAIT;
+        Bundle params = getArguments();
+        if (params != null) {
+            state = State.getByValue(params.getInt(STR_KEY_STATE, -1));
+        }
+
+        List<IssueEntity> data = DataUtil.getModel(getContext(), state);
+
         mAdapter = new LVAdapter(getContext(), data);
         mInvoker = new Invoker(getContext());
-
     }
 
     @Override

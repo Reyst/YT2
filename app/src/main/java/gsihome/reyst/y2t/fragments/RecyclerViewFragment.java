@@ -21,18 +21,33 @@ import gsihome.reyst.y2t.data.State;
 
 public class RecyclerViewFragment extends Fragment {
 
+    public static final String STR_KEY_STATE = "state";
     private RecyclerView mRecyclerView;
     private IssueListAdapter mAdapter;
 
-    public static Fragment getInstance() {
-        return new RecyclerViewFragment();
+    public static Fragment getInstance(State state) {
+
+        Fragment fragment = new RecyclerViewFragment();
+
+        Bundle params = new Bundle();
+        params.putInt(STR_KEY_STATE, state.getValue());
+
+        fragment.setArguments(params);
+
+        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        List<IssueEntity> issueList = DataUtil.getModel(getContext(), State.IN_WORK);
+        State state = State.WAIT;
+        Bundle params = getArguments();
+        if (params != null) {
+            state = State.getByValue(params.getInt(STR_KEY_STATE, -1));
+        }
+
+        List<IssueEntity> issueList = DataUtil.getModel(getContext(), state);
         mAdapter = new IssueListAdapter(getContext(), issueList, new Invoker(getContext()));
     }
 

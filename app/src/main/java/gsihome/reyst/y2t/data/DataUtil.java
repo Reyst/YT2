@@ -53,11 +53,15 @@ public class DataUtil {
 
             Date dtCreated = new Date();
             dtCreated.setDate(r.nextInt(31) + 1);
-            dtCreated.setMonth(2);
+            dtCreated.setMonth(1);
 
-            result.add(new IssueEntity(i, number, category, state, dtCreated, new Date(), new Date(),
+            Date dtReg = new Date();
+            dtReg.setDate(r.nextInt(31) + 1);
+            dtReg.setMonth(2);
+
+            result.add(new IssueEntity(i, number, category, state, dtCreated, dtReg, new Date(),
                     responsible, iconId, randomInt % 3,
-                    "Полное описание задачи № " + number + ".This is full description of the task.",
+                    "Полное описание задачи № " + number + ".This is a full description of the task № " + number,
                     Arrays.asList(urls)));
         }
 

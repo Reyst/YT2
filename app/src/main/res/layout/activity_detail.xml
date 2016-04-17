@@ -66,7 +66,7 @@
 
                 android:background="@drawable/background_job_status"
 
-                android:text="@string/str_in_work"
+                tools:text="@string/str_in_work"
                 android:textColor="@color/statusColor"
                 android:textSize="@dimen/main_text_size"
                 />
@@ -242,7 +242,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="@string/str_my_wife"
+                tools:text="@string/str_my_wife"
                 android:textSize="@dimen/main_text_size"
 
                 android:layout_alignParentRight="true"
@@ -273,7 +273,7 @@
 
                 android:layout_below="@id/divider5"
 
-                android:text="@string/str_description"
+                tools:text="@string/str_description"
 
                 android:layout_marginLeft="@dimen/scrollview_padding"
                 android:layout_marginStart="@dimen/scrollview_padding"

@@ -19,4 +19,6 @@
     <string name="responsibleTag">Напис "Відповідальний"</string>
     <string name="str_in_work">В роботі</string>
     <string name="str_section_value">Ляльки</string>
+    <string name="str_done">Виконано</string>
+    <string name="str_wait">Очікує</string>
 </resources>

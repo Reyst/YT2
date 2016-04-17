@@ -25,19 +25,9 @@ public class IssueListAdapter extends RecyclerView.Adapter<IssueListAdapter.Issu
     private OnItemClickListener mOnItemClickListener;
     private DateFormat mFormatter = DataUtil.getFormatter();
 
-    private View.OnClickListener mOnClickListener;
-
     public IssueListAdapter(Context mContext, List<IssueEntity> model, OnItemClickListener listener) {
         this.mContext = mContext;
         initModel(model);
-
-        mOnClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mOnItemClickListener.onItemClick();
-            }
-        };
-
         mOnItemClickListener = listener;
     }
 
@@ -48,11 +38,7 @@ public class IssueListAdapter extends RecyclerView.Adapter<IssueListAdapter.Issu
 
     @Override
     public IssueViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         View v = LayoutInflater.from(mContext).inflate(R.layout.list_item_card, parent, false);
-
-        v.setOnClickListener(mOnClickListener);
-
         return new IssueViewHolder(v);
     }
 
@@ -79,10 +65,10 @@ public class IssueListAdapter extends RecyclerView.Adapter<IssueListAdapter.Issu
     }
 
     public interface OnItemClickListener {
-        void onItemClick();
+        void onItemClick(IssueEntity entity);
     }
 
-    public static class IssueViewHolder extends RecyclerView.ViewHolder {
+    public class IssueViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView categoryTitle;
         private TextView taskDesc;
@@ -101,7 +87,16 @@ public class IssueListAdapter extends RecyclerView.Adapter<IssueListAdapter.Issu
             dateCreated = (TextView) itemView.findViewById(R.id.date_created);
             likesAmount = (TextView) itemView.findViewById(R.id.likes_amount);
 
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+
+            if (mOnItemClickListener != null) {
+                mOnItemClickListener.onItemClick(mModel.get(position));
+            }
         }
     }
-
 }

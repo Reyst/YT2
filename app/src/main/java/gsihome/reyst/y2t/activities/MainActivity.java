@@ -21,6 +21,7 @@ import java.util.List;
 
 import gsihome.reyst.y2t.R;
 import gsihome.reyst.y2t.adapters.PagerAdapter;
+import gsihome.reyst.y2t.data.State;
 import gsihome.reyst.y2t.fragments.ListViewFragment;
 import gsihome.reyst.y2t.fragments.RecyclerViewFragment;
 
@@ -60,13 +61,13 @@ public class MainActivity extends AppCompatActivity
         mFragments = new ArrayList<>(3);
         mFragmentNames = new ArrayList<>(3);
 
-        mFragments.add(RecyclerViewFragment.getInstance());
+        mFragments.add(RecyclerViewFragment.getInstance(State.IN_WORK));
         mFragmentNames.add(getString(R.string.first_tab));
 
-        mFragments.add(RecyclerViewFragment.getInstance());
+        mFragments.add(RecyclerViewFragment.getInstance(State.DONE));
         mFragmentNames.add(getString(R.string.second_tab));
 
-        mFragments.add(ListViewFragment.getInstance());
+        mFragments.add(ListViewFragment.getInstance(State.WAIT));
         mFragmentNames.add(getString(R.string.third_tab));
 
     }
