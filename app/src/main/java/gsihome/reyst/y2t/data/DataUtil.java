@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 import gsihome.reyst.y2t.R;
@@ -66,7 +67,7 @@ public class DataUtil {
     public static DateFormat getFormatter() {
 
         if (sFormatter == null) {
-            sFormatter = new SimpleDateFormat("MMM dd, yyyy");
+            sFormatter = new SimpleDateFormat("MMM d, yyyy", Locale.getDefault());
         }
 
         return sFormatter;

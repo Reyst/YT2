@@ -55,7 +55,7 @@ public class ImageGalleryAdapter extends RecyclerView.Adapter<ImageGalleryAdapte
 
         View v = LayoutInflater.from(mContext).inflate(R.layout.image_card, parent, false);
 
-        mSideLength = parent.getHeight();
+        mSideLength = parent.getLayoutParams().height;
 
         v.getLayoutParams().height = mSideLength;
         v.getLayoutParams().width = mSideLength;

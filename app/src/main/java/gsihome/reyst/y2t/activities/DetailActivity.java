@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 
 import gsihome.reyst.y2t.R;
@@ -36,7 +36,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         ActionBar actionBar = getSupportActionBar();
 
         if (actionBar != null) {
-//            actionBar.setTitle(R.string.task_name);
+            actionBar.setTitle(R.string.task_name);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
@@ -48,11 +48,12 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         initDates(Calendar.getInstance());
 
         ViewGroup vg = (ViewGroup) findViewById(R.id.main_container);
-        int chCount = vg.getChildCount();
-
-        for (int i = 0; i < chCount; i++) {
-            View childView = vg.getChildAt(i);
-            childView.setOnClickListener(this);
+        if (vg != null) {
+            int chCount = vg.getChildCount();
+            for (int i = 0; i < chCount; i++) {
+                View childView = vg.getChildAt(i);
+                childView.setOnClickListener(this);
+            }
         }
     }
 
@@ -72,19 +73,18 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private void initRecyclerView() {
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_images);
 
-        ViewGroup.LayoutParams lp = mRecyclerView.getLayoutParams();
+        if (mRecyclerView != null) {
+            ViewGroup.LayoutParams lp = mRecyclerView.getLayoutParams();
+            lp.height = getResources().getDisplayMetrics().widthPixels / 2;
+            mRecyclerView.setLayoutParams(lp);
 
-        lp.height = getResources().getDisplayMetrics().widthPixels / 2;
-        mRecyclerView.setLayoutParams(lp);
+            mRecyclerView.setHasFixedSize(true);
 
-        mRecyclerView.setHasFixedSize(true);
-
-        mLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-
-        mAdapter = new ImageGalleryAdapter(this, new ArrayList<String>(), this);
-
-        mRecyclerView.setAdapter(mAdapter);
+            mLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
+            mRecyclerView.setLayoutManager(mLayoutManager);
+            mAdapter = new ImageGalleryAdapter(this, Arrays.asList(getResources().getStringArray(R.array.image_urls)), this);
+            mRecyclerView.setAdapter(mAdapter);
+        }
     }
 
     @Override

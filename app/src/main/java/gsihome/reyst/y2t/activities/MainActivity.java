@@ -1,7 +1,6 @@
 package gsihome.reyst.y2t.activities;
 
 import android.os.Bundle;
-//import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -38,9 +37,12 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
         if (toolbar != null) {
             toolbar.setTitle(R.string.all_appeals);
+            toolbar.setNavigationIcon(R.drawable.toolbar_icon);
         }
+
         setSupportActionBar(toolbar);
 
         initFragments();

@@ -22,14 +22,23 @@ public class IssueListAdapter extends RecyclerView.Adapter<IssueListAdapter.Issu
     private Context mContext;
     private List<IssueEntity> mModel;
 
-    private OnItemClickListener mOnClickListener;
+    private OnItemClickListener mOnItemClickListener;
     private DateFormat mFormatter = DataUtil.getFormatter();
+
+    private View.OnClickListener mOnClickListener;
 
     public IssueListAdapter(Context mContext, List<IssueEntity> model, OnItemClickListener listener) {
         this.mContext = mContext;
         initModel(model);
 
-        mOnClickListener = listener;
+        mOnClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mOnItemClickListener.onItemClick();
+            }
+        };
+
+        mOnItemClickListener = listener;
     }
 
     private void initModel(Collection<IssueEntity> data) {
@@ -41,6 +50,8 @@ public class IssueListAdapter extends RecyclerView.Adapter<IssueListAdapter.Issu
     public IssueViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(mContext).inflate(R.layout.list_item_card, parent, false);
+
+        v.setOnClickListener(mOnClickListener);
 
         return new IssueViewHolder(v);
     }
@@ -55,7 +66,10 @@ public class IssueListAdapter extends RecyclerView.Adapter<IssueListAdapter.Issu
         holder.likesAmount.setText(String.valueOf(issueEntity.getLikeAmount()));
         holder.categoryIcon.setImageDrawable(mContext.getResources().getDrawable(issueEntity.getIconId()));
         holder.dateCreated.setText(mFormatter.format(issueEntity.getCreated()));
-        holder.daysAmount.setText(String.valueOf(issueEntity.getDaysAmount()));
+
+        String days = mContext.getResources().getString(R.string.days);
+
+        holder.daysAmount.setText(String.valueOf(issueEntity.getDaysAmount()).concat(" ").concat(days));
 
     }
 

@@ -13,6 +13,7 @@ import com.melnykov.fab.FloatingActionButton;
 import java.util.List;
 
 import gsihome.reyst.y2t.R;
+import gsihome.reyst.y2t.activities.Invoker;
 import gsihome.reyst.y2t.adapters.IssueListAdapter;
 import gsihome.reyst.y2t.data.DataUtil;
 import gsihome.reyst.y2t.data.IssueEntity;
@@ -23,8 +24,6 @@ public class RecyclerViewFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private IssueListAdapter mAdapter;
 
-    private List<IssueEntity> mData;
-
     public static Fragment getInstance() {
         return new RecyclerViewFragment();
     }
@@ -33,8 +32,8 @@ public class RecyclerViewFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mData = DataUtil.getModel(getContext(), State.IN_WORK);
-        mAdapter = new IssueListAdapter(getContext(), mData, null);
+        List<IssueEntity> issueList = DataUtil.getModel(getContext(), State.IN_WORK);
+        mAdapter = new IssueListAdapter(getContext(), issueList, new Invoker(getContext()));
     }
 
     @Override

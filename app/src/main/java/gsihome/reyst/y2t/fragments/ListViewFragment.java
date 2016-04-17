@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gsihome.reyst.y2t.R;
+import gsihome.reyst.y2t.activities.Invoker;
 import gsihome.reyst.y2t.data.DataUtil;
 import gsihome.reyst.y2t.data.IssueEntity;
 import gsihome.reyst.y2t.data.State;
@@ -29,6 +31,8 @@ public class ListViewFragment extends Fragment {
 
     private ListViewCompat mListView;
     private ListAdapter mAdapter;
+
+    private Invoker mInvoker;
 
     public static Fragment getInstance() {
 
@@ -41,6 +45,7 @@ public class ListViewFragment extends Fragment {
 
         List<IssueEntity> data = DataUtil.getModel(getContext(), State.IN_WORK);
         mAdapter = new LVAdapter(getContext(), data);
+        mInvoker = new Invoker(getContext());
 
     }
 
@@ -51,6 +56,8 @@ public class ListViewFragment extends Fragment {
 
         mListView = (ListViewCompat) v.findViewById(R.id.list_view);
         mListView.setAdapter(mAdapter);
+
+        mListView.setOnItemClickListener(mInvoker);
 
         FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
         fab.attachToListView(mListView);
@@ -111,7 +118,8 @@ public class ListViewFragment extends Fragment {
 
             holder.dateCreated.setText(DataUtil.getFormatter().format(issueEntity.getCreated()));
 
-            holder.daysAmount.setText(String.valueOf(issueEntity.getDaysAmount()));
+            String days = mContext.getResources().getString(R.string.days);
+            holder.daysAmount.setText(String.valueOf(issueEntity.getDaysAmount()).concat(" ").concat(days));
 
             v.setTag(holder);
 

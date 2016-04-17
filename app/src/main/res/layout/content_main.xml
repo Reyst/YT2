@@ -16,9 +16,13 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
 
+        android:paddingLeft="@dimen/indicator_padding"
+        android:paddingRight="@dimen/indicator_padding"
+
         app:tabIndicatorColor="@color/colorTabAccent"
         app:tabSelectedTextColor="@color/colorTabAccent"
         app:tabTextColor="@color/colorTabInactive"
+
 
         android:minHeight="?attr/actionBarSize"
         />
