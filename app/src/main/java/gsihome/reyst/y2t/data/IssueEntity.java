@@ -1,7 +1,5 @@
 package gsihome.reyst.y2t.data;
 
-import android.support.annotation.NonNull;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,7 +37,7 @@ public class IssueEntity implements Serializable {
                        Date created, Date registered, Date deadline, String responsible,
                        int iconId, int likeAmount,
                        String fullText,
-                       @NonNull List<String> images) {
+                       List<String> images) {
         this._ID = id;
         this.mNumber = number;
         this.mCategory = category;
@@ -153,4 +151,8 @@ public class IssueEntity implements Serializable {
         this.mImages = images;
     }
 
+    public int getDaysAmount() {
+        Date now = new Date();
+        return (int) ((now.getTime() - mCreated.getTime()) / (1000 * 24 * 3600));
+    }
 }

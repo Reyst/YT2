@@ -9,7 +9,7 @@
     <string name="str_created">Created</string>
     <string name="str_registered">Registered</string>
     <string name="str_deadline">Deadline</string>
-    <string name="emptyString" translatable="false" />
+    <string name="emptyString" translatable="false"></string>
     <string name="str_image">Image</string>
     <string name="str_responsible">Responsible</string>
     <string name="str_my_wife">My wife</string>
@@ -31,6 +31,9 @@
     <string name="responsibile1">Днiпропетровський МВК</string>
     <string name="responsibile2">Павлоградськiй МВК</string>
 
+    <string name="bottom_drawer_text1">Зроблено з любов\'ю</string>
+    <string name="bottom_drawer_text2"><a href="www.itruh.dp.ua">IT Ruh Dnipro</a> та <a href="https://yalantis.com">Yalantis</a></string>
+    <string name="bottom_drawer_text3"><font color="#f57f17"><u>IT Ruh Dnipro</u></font> та <u><font color="#f57f17">Yalantis</font></u></string>
 
     <string name="sectionTag">Section</string>
     <string name="statusTag">Status</string>
@@ -45,7 +48,8 @@
     <string name="responsibleTag">Label for responsible</string>
     <string name="valueResponsibleTag">Responsible</string>
     <string name="task_name">SE-19521130</string>
-
-
+    <string name="days">days</string>
 
 </resources>
+
+<!--<string name="bottom_drawer_text2"><u>IT Ruh Dnipro</u> та <u>Yalantis</u></string>-->

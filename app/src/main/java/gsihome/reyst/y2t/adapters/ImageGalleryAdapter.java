@@ -11,19 +11,15 @@ import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
 import gsihome.reyst.y2t.R;
 
-/**
- * Created by Reyst on 12.03.2016.
- */
 public class ImageGalleryAdapter extends RecyclerView.Adapter<ImageGalleryAdapter.ImageViewHolder> {
 
     private Context mContext;
-    private List<String> model; // Used List, because I think that List better than Array
+    private List<String> mModel;
 
     private OnItemClickListener mOnClickListener;
 
@@ -31,7 +27,6 @@ public class ImageGalleryAdapter extends RecyclerView.Adapter<ImageGalleryAdapte
 
     public static class ImageViewHolder extends ViewHolder {
 
-        // Visibility changed
         private ImageView imageView;
 
         public ImageViewHolder(View v) {
@@ -51,8 +46,8 @@ public class ImageGalleryAdapter extends RecyclerView.Adapter<ImageGalleryAdapte
     }
 
     private void initModel(Collection<String> data) {
-        model = new ArrayList<>(data.size());
-        model.addAll(data);
+        mModel = new ArrayList<>(data.size());
+        mModel.addAll(data);
     }
 
     @Override
@@ -71,7 +66,7 @@ public class ImageGalleryAdapter extends RecyclerView.Adapter<ImageGalleryAdapte
     @Override
     public void onBindViewHolder(ImageViewHolder holder, final int position) {
         Picasso.with(mContext)
-                .load(model.get(position))
+                .load(mModel.get(position))
                 .resize(mSideLength, mSideLength)
                 .centerCrop()
                 .into(holder.imageView);
@@ -89,6 +84,6 @@ public class ImageGalleryAdapter extends RecyclerView.Adapter<ImageGalleryAdapte
 
     @Override
     public int getItemCount() {
-        return model.size();
+        return mModel.size();
     }
 }

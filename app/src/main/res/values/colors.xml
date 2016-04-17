@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#FF537caa</color>
     <color name="colorPrimaryDark">#FF426288</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#FFff9c25</color>
 
     <color name="colorFab">#FFff9c25</color>
 
@@ -19,3 +19,6 @@
     <color name="leftTextColor">#FF888888</color>
 
 </resources>
+
+
+<!--<color name="colorAccent">#FF4081</color>-->

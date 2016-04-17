@@ -82,7 +82,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         mLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        // todo Replace stub code
         mAdapter = new ImageGalleryAdapter(this, new ArrayList<String>(), this);
 
         mRecyclerView.setAdapter(mAdapter);

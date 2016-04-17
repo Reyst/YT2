@@ -1,7 +1,7 @@
 package gsihome.reyst.y2t.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
+//import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.melnykov.fab.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity
     private void initViewPager() {
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
-        final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), new ArrayList<Fragment>());
+        final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), mFragments);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
 
