@@ -24,6 +24,36 @@ import gsihome.reyst.y2t.adapters.PagerAdapter;
 import gsihome.reyst.y2t.data.State;
 import gsihome.reyst.y2t.fragments.ListViewFragment;
 import gsihome.reyst.y2t.fragments.RecyclerViewFragment;
+// DataUtil.java: 
+// Line 29: No need to create new object of Date, just use System.getCurrentTimeMillis()
+// Line 33: replace @SuppressLint to make it work for String.format
+// 	Line 45, 50: icon2, icon1 - bad naming - not describes the meaning
+// 	Line 64: Hardcoded text
+// nav_header_main.xml: format code, no need in relative layout as there is only one child,
+// And if don’t use features of complicated layouts use frame layout 
+// ImageGalleryAdapter.java : 
+// Line 67: read lint warnings
+// ListViewFragment:
+// Remove unused imports
+// Line 34: lint warning
+// Line 146-150: include view class in field naming like mTvSomething or mSomethingTextView
+// Line 83: move adapter class  from fragment  
+// MainActiviy: 
+// 	Line 31: remove unused field
+// 	Line 82: you can replace with tablayout.setupWithViewPager(viewPager), add   getPageTitle in PagerAdapter in that case. 
+// DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout); -  used two times . make a field
+// Remove NullPointerExeption warnings
+// http://prntscr.com/axiy7b - replace with switch
+//     6	RecyclerViewFragment, ListViewFragment - make animation of fab through behavior, something like here http://www.sitepoint.com/animating-android-floating-action-button/.
+// The way you do it is dangerous because frgment can be attached to the activity without fab  
+//    7. 	Use instead of deprecated  mContext.getResources().getDrawable
+// ContextCompat.getDrawable() (IssueListAdapter, ListViewFragment)
+//    8. 	List_item_card.xml - 	need to rebuild layout, too many relative layouts where it can be changed to linear. Use LinearLayouts , weight attribute can help you, at least in base cardview layout  . Prevent text overlap. For example in like counter
+
+
+
+	
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
