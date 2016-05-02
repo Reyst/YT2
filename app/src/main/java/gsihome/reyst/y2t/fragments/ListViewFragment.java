@@ -1,10 +1,8 @@
 package gsihome.reyst.y2t.fragments;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.ListViewCompat;
 import android.view.LayoutInflater;
@@ -27,8 +25,8 @@ public class ListViewFragment extends Fragment {
 
     private static final String STR_KEY_STATE = "state";
 
+    private FloatingActionButton mFab;
     private ListAdapter mAdapter;
-
     private Invoker mInvoker;
 
     public static Fragment getInstance(State state) {
@@ -41,6 +39,15 @@ public class ListViewFragment extends Fragment {
         fragment.setArguments(params);
 
         return fragment;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mFab = null;
+        if (context instanceof FloatingActionButtonOwner) {
+            mFab = ((FloatingActionButtonOwner) context).getFloatingActionButton();
+        }
     }
 
     @Override
@@ -69,28 +76,25 @@ public class ListViewFragment extends Fragment {
 
         listView.setOnItemClickListener(mInvoker);
 
-        Activity activity = getActivity();
-        if (activity instanceof FloatingActionButtonOwner) {
-            final FloatingActionButton fab = ((FloatingActionButtonOwner) activity).getFloatingActionButton();
-            if (fab != null) {
-                listView.setOnScrollListener(new AbsListView.OnScrollListener() {
-                    private int mLastFirstVisibleItem = 0;
-                    @Override
-                    public void onScrollStateChanged(AbsListView view, int scrollState) {
-                    }
+        if (mFab != null) {
+            listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+                private int mLastFirstVisibleItem = 0;
 
-                    @Override
-                    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                        int fabVisibility = fab.getVisibility();
-                        if (firstVisibleItem > mLastFirstVisibleItem && fabVisibility == View.VISIBLE) {
-                            fab.hide();
-                        } else if (firstVisibleItem < mLastFirstVisibleItem && fabVisibility == View.GONE) {
-                            fab.show();
-                        }
-                        mLastFirstVisibleItem = firstVisibleItem;
+                @Override
+                public void onScrollStateChanged(AbsListView view, int scrollState) {
+                }
+
+                @Override
+                public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                    int fabVisibility = mFab.getVisibility();
+                    if (firstVisibleItem > mLastFirstVisibleItem && fabVisibility == View.VISIBLE) {
+                        mFab.hide();
+                    } else if (firstVisibleItem < mLastFirstVisibleItem && fabVisibility == View.GONE) {
+                        mFab.show();
                     }
-                });
-            }
+                    mLastFirstVisibleItem = firstVisibleItem;
+                }
+            });
         }
 
         return v;
