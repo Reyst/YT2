@@ -28,8 +28,7 @@
 
     <style name="ListItem" />
 
-    <style name="ListItem.Text">
-    </style>
+    <style name="ListItem.Text" />
 
     <style name="ListItem.ImageView" />
 
@@ -73,6 +72,11 @@
 
     <style name="DrawerMenuItemAppearance" parent="TextAppearance.AppCompat.Menu">
         <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="DividerStyle">
+        <item name="android:alpha">0.11</item>
+        <item name="android:background">@android:color/black</item>
     </style>
 
 </resources>

@@ -1,6 +1,5 @@
 package gsihome.reyst.y2t.data;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 
 import java.text.DateFormat;
@@ -16,7 +15,7 @@ import gsihome.reyst.y2t.R;
 
 public class DataUtil {
 
-    public static final int MAGIC_N1 = 10_000_000;
+    private static final int MAGIC_N1 = 10_000_000;
 
     private static DateFormat sFormatter;
 
@@ -26,13 +25,12 @@ public class DataUtil {
 
         List<IssueEntity> result = new ArrayList<>(10);
 
-        Random r = new Random((new Date()).getTime());
+        Random r = new Random(System.currentTimeMillis());
 
         for (int i = 1; i <= 10; i++) {
 
-            @SuppressLint("DefaultLocale")
             int randomInt = r.nextInt(MAGIC_N1);
-            String number = String.format("CE-%d08", randomInt);
+            String number = String.format(Locale.getDefault(),"CE-%d08", randomInt);
 
             String category = "";
             String responsible = "";
@@ -41,13 +39,13 @@ public class DataUtil {
             switch (randomInt % 2) {
                 case 0:
                     category = ctx.getString(R.string.category1);
-                    responsible = ctx.getString(R.string.responsibile1);
-                    iconId = R.drawable.icon2;
+                    responsible = ctx.getString(R.string.responsible1);
+                    iconId = R.drawable.communal_service;
                     break;
                 case 1:
                     category = ctx.getString(R.string.category2);
-                    responsible = ctx.getString(R.string.responsibile2);
-                    iconId = R.drawable.icon1;
+                    responsible = ctx.getString(R.string.responsible2);
+                    iconId = R.drawable.building_and_upgrade;
                     break;
             }
 
@@ -61,7 +59,7 @@ public class DataUtil {
 
             result.add(new IssueEntity(i, number, category, state, dtCreated, dtReg, new Date(),
                     responsible, iconId, randomInt % 3,
-                    "Полное описание задачи № " + number + ".This is a full description of the task № " + number,
+                    ctx.getString(R.string.descr_task_part1) + number + ctx.getString(R.string.descr_task_part2) + number,
                     Arrays.asList(urls)));
         }
 

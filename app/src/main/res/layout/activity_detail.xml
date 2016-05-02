@@ -77,7 +77,8 @@
                 android:layout_height="@dimen/divider_thick"
                 android:layout_below="@id/tv_status"
                 android:layout_marginTop="@dimen/text_part_vertical_padding"
-                android:background="@color/dividerColor" />
+                style="@style/DividerStyle"
+                />
 
             <TextView
                 android:id="@+id/tv_created"
@@ -120,7 +121,8 @@
                 android:layout_height="@dimen/divider_thick"
                 android:layout_below="@id/tv_created"
                 android:layout_marginTop="@dimen/text_part_vertical_padding"
-                android:background="@color/dividerColor" />
+                style="@style/DividerStyle"
+                />
 
             <TextView
                 android:id="@+id/tv_registered"
@@ -166,7 +168,7 @@
                 android:layout_height="@dimen/divider_thick"
                 android:layout_below="@id/tv_registered"
                 android:layout_marginTop="@dimen/text_part_vertical_padding"
-                android:background="@color/dividerColor"
+                style="@style/DividerStyle"
                 />
 
             <TextView
@@ -213,7 +215,7 @@
                 android:layout_height="@dimen/divider_thick"
                 android:layout_below="@id/tv_deadline"
                 android:layout_marginTop="@dimen/text_part_vertical_padding"
-                android:background="@color/dividerColor"
+                style="@style/DividerStyle"
                 />
 
             <TextView
@@ -242,7 +244,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                tools:text="@string/str_my_wife"
                 android:textSize="@dimen/main_text_size"
 
                 android:layout_alignParentRight="true"
@@ -260,7 +261,7 @@
                 android:layout_height="@dimen/divider_thick"
                 android:layout_below="@id/tv_responsible"
                 android:layout_marginTop="@dimen/text_part_vertical_padding"
-                android:background="@color/dividerColor"
+                style="@style/DividerStyle"
                 />
 
             <TextView
@@ -272,8 +273,6 @@
                 android:layout_height="wrap_content"
 
                 android:layout_below="@id/divider5"
-
-                tools:text="@string/str_description"
 
                 android:layout_marginLeft="@dimen/scrollview_padding"
                 android:layout_marginStart="@dimen/scrollview_padding"

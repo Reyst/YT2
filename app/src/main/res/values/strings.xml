@@ -12,7 +12,6 @@
     <string name="emptyString" translatable="false" />
     <string name="str_image">Image</string>
     <string name="str_responsible">Responsible</string>
-    <string name="str_my_wife">My wife</string>
     <string name="str_in_work">In work</string>
     <string name="str_done">Done</string>
     <string name="str_wait">Wait</string>
@@ -30,8 +29,8 @@
     <string name="action_filter" translatable="false">Filter</string>
     <string name="category1" translatable="false">Комунальне господарство</string>
     <string name="category2" translatable="false">Благоустрій та будівництво</string>
-    <string name="responsibile1" translatable="false">Днiпропетровський МВК</string>
-    <string name="responsibile2" translatable="false">Павлоградськiй МВК</string>
+    <string name="responsible1" translatable="false">Днiпропетровський МВК</string>
+    <string name="responsible2" translatable="false">Павлоградськiй МВК</string>
 
     <string name="days" translatable="false"> днів</string>
 
@@ -47,10 +46,9 @@
     <string name="deadlineTag">Label for deadline</string>
     <string name="valueDeadlineTag">Deadline</string>
     <string name="descriptionTag">Description</string>
-    <string name="str_description">My wife are selling urgently dolls from the personal collection. Price may be discussed.</string>
     <string name="responsibleTag">Label for responsible</string>
     <string name="valueResponsibleTag">Responsible</string>
-    <string name="task_name" translatable="false">SE-19521130</string>
     <string name="key_for_entity" translatable="false">IssueEntity</string>
-
+    <string name="descr_task_part1" translatable="false">"Полное описание задачи № "</string>
+    <string name="descr_task_part2" translatable="false">".This is a full description of the task № "</string>
 </resources>

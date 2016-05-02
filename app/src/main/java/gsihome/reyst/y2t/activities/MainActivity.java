@@ -14,8 +14,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.melnykov.fab.FloatingActionButton;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,10 +26,9 @@ import gsihome.reyst.y2t.fragments.RecyclerViewFragment;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private FloatingActionButton mFab;
-
     private List<Fragment> mFragments;
     private List<String> mFragmentNames;
+    private DrawerLayout mDrawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +48,6 @@ public class MainActivity extends AppCompatActivity
         }
 
         initFragments();
-        initFab();
         initViewPager();
 
     }
@@ -75,50 +71,24 @@ public class MainActivity extends AppCompatActivity
     private void initViewPager() {
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
-        final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), mFragments);
+        final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), mFragments, mFragmentNames);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
 
         if (tabLayout != null && viewPager != null) {
-            for (String fName : mFragmentNames) {
-                tabLayout.addTab(tabLayout.newTab().setText(fName));
-            }
-
-            tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-                @Override
-                public void onTabSelected(TabLayout.Tab tab) {
-                    viewPager.setCurrentItem(tab.getPosition());
-                }
-
-                @Override
-                public void onTabUnselected(TabLayout.Tab tab) {
-
-                }
-
-                @Override
-                public void onTabReselected(TabLayout.Tab tab) {
-
-                }
-            });
-
             viewPager.setAdapter(adapter);
+            tabLayout.setupWithViewPager(viewPager);
             viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         }
     }
 
-    private void initFab() {
-        mFab = (FloatingActionButton) findViewById(R.id.fab);
-    }
-
     private void initDrawer(Toolbar toolbar) {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, mDrawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
-        //drawer.setDrawerListener(toggle);
-
-        if (drawer != null) {
-            drawer.addDrawerListener(toggle);
+        if (mDrawer != null) {
+            mDrawer.addDrawerListener(toggle);
         }
 
         toggle.syncState();
@@ -131,9 +101,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        if (mDrawer.isDrawerOpen(GravityCompat.START)) {
+            mDrawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
@@ -161,22 +130,21 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_all_appeals) {
-            // Handle the camera action
-        } else if (id == R.id.nav_appeals_on_map) {
-
-        } else if (id == R.id.nav_login) {
-
+        switch (id) {
+            case R.id.nav_all_appeals:
+                break;
+            case R.id.nav_appeals_on_map:
+                break;
+            case R.id.nav_login:
+                break;
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        mDrawer.closeDrawer(GravityCompat.START);
         return true;
     }
 }

@@ -11,10 +11,8 @@
     <string name="str_deadline">Вирiшити до</string>
     <string name="valueDeadlineTag">Вирiшити до</string>
     <string name="descriptionTag">Опис</string>
-    <string name="str_description">Терміново продаються ляльки з власної колекції. Ціна обговорюється.</string>
     <string name="str_image">Зображення</string>
     <string name="str_responsible">Відповідальний</string>
-    <string name="str_my_wife">Моя дружина</string>
     <string name="valueResponsibleTag">Відповідальний</string>
     <string name="responsibleTag">Напис "Відповідальний"</string>
     <string name="str_in_work">В роботі</string>

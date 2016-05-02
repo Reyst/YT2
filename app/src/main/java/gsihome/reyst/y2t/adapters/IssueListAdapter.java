@@ -1,6 +1,7 @@
 package gsihome.reyst.y2t.adapters;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,15 +48,15 @@ public class IssueListAdapter extends RecyclerView.Adapter<IssueListAdapter.Issu
 
         IssueEntity issueEntity = mModel.get(position);
 
-        holder.categoryTitle.setText(issueEntity.getCategory());
-        holder.taskDesc.setText(issueEntity.getFullText());
-        holder.likesAmount.setText(String.valueOf(issueEntity.getLikeAmount()));
-        holder.categoryIcon.setImageDrawable(mContext.getResources().getDrawable(issueEntity.getIconId()));
-        holder.dateCreated.setText(mFormatter.format(issueEntity.getCreated()));
+        holder.mTvCategoryTitle.setText(issueEntity.getCategory());
+        holder.mTvTaskDesc.setText(issueEntity.getFullText());
+        holder.mTvLikesAmount.setText(String.valueOf(issueEntity.getLikeAmount()));
+        holder.mIvCategoryIcon.setImageDrawable(ContextCompat.getDrawable(mContext, issueEntity.getIconId()));
+        holder.mTvDateCreated.setText(mFormatter.format(issueEntity.getCreated()));
 
         String days = mContext.getResources().getString(R.string.days);
 
-        holder.daysAmount.setText(String.valueOf(issueEntity.getDaysAmount()).concat(" ").concat(days));
+        holder.mTvDaysAmount.setText(String.valueOf(issueEntity.getDaysAmount()).concat(" ").concat(days));
 
     }
 
@@ -70,22 +71,22 @@ public class IssueListAdapter extends RecyclerView.Adapter<IssueListAdapter.Issu
 
     public class IssueViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private TextView categoryTitle;
-        private TextView taskDesc;
-        private TextView daysAmount;
-        private TextView dateCreated;
-        private TextView likesAmount;
-        private ImageView categoryIcon;
+        private TextView mTvCategoryTitle;
+        private TextView mTvTaskDesc;
+        private TextView mTvDaysAmount;
+        private TextView mTvDateCreated;
+        private TextView mTvLikesAmount;
+        private ImageView mIvCategoryIcon;
 
         public IssueViewHolder(View itemView) {
             super(itemView);
 
-            categoryTitle = (TextView) itemView.findViewById(R.id.category_title);
-            categoryIcon = (ImageView) itemView.findViewById(R.id.category_icon);
-            taskDesc = (TextView) itemView.findViewById(R.id.task_desc);
-            daysAmount = (TextView) itemView.findViewById(R.id.amount_days);
-            dateCreated = (TextView) itemView.findViewById(R.id.date_created);
-            likesAmount = (TextView) itemView.findViewById(R.id.likes_amount);
+            mTvCategoryTitle = (TextView) itemView.findViewById(R.id.category_title);
+            mIvCategoryIcon = (ImageView) itemView.findViewById(R.id.category_icon);
+            mTvTaskDesc = (TextView) itemView.findViewById(R.id.task_desc);
+            mTvDaysAmount = (TextView) itemView.findViewById(R.id.amount_days);
+            mTvDateCreated = (TextView) itemView.findViewById(R.id.date_created);
+            mTvLikesAmount = (TextView) itemView.findViewById(R.id.likes_amount);
 
             itemView.setOnClickListener(this);
         }

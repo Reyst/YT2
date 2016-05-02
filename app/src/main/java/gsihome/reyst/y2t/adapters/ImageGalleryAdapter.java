@@ -25,20 +25,6 @@ public class ImageGalleryAdapter extends RecyclerView.Adapter<ImageGalleryAdapte
 
     private int mSideLength;
 
-    public static class ImageViewHolder extends ViewHolder {
-
-        private ImageView imageView;
-
-        public ImageViewHolder(View v) {
-            super(v);
-            imageView = (ImageView) v.findViewById(R.id.iv_image);
-        }
-    }
-
-    public interface OnItemClickListener {
-        void onClick(View view);
-    }
-
     public ImageGalleryAdapter(Context mContext, List<String> model, OnItemClickListener listener) {
         this.mContext = mContext;
         initModel(model);
@@ -65,25 +51,39 @@ public class ImageGalleryAdapter extends RecyclerView.Adapter<ImageGalleryAdapte
 
     @Override
     public void onBindViewHolder(ImageViewHolder holder, final int position) {
+        String path = mModel.get(position);
+        final int index = mModel.indexOf(path);
+
         Picasso.with(mContext)
-                .load(mModel.get(position))
+                .load(path)
                 .resize(mSideLength, mSideLength)
                 .centerCrop()
                 .into(holder.imageView);
-
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.setTag(mContext.getResources().getString(R.string.str_image) + " #" + String.valueOf(position));
+                v.setTag(mContext.getResources().getString(R.string.str_image) + " #" + String.valueOf(index));
                 mOnClickListener.onClick(v);
             }
         });
-
-
     }
 
     @Override
     public int getItemCount() {
         return mModel.size();
+    }
+
+    public interface OnItemClickListener {
+        void onClick(View view);
+    }
+
+    public static class ImageViewHolder extends ViewHolder {
+
+        private ImageView imageView;
+
+        public ImageViewHolder(View v) {
+            super(v);
+            imageView = (ImageView) v.findViewById(R.id.iv_image);
+        }
     }
 }

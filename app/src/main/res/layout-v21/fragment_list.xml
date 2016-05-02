@@ -6,8 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:dividerHeight="@dimen/list_item_margin_2"
-    android:orientation="vertical"
+
+    android:nestedScrollingEnabled="true"
     android:padding="@dimen/list_item_margin"
     tools:context=".fragments.ListViewFragment"
     />
+
 

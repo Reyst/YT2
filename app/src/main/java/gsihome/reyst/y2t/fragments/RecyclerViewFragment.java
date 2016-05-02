@@ -8,8 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.melnykov.fab.FloatingActionButton;
-
 import java.util.List;
 
 import gsihome.reyst.y2t.R;
@@ -21,8 +19,7 @@ import gsihome.reyst.y2t.data.State;
 
 public class RecyclerViewFragment extends Fragment {
 
-    public static final String STR_KEY_STATE = "state";
-    private RecyclerView mRecyclerView;
+    private static final String STR_KEY_STATE = "state";
     private IssueListAdapter mAdapter;
 
     public static Fragment getInstance(State state) {
@@ -56,16 +53,14 @@ public class RecyclerViewFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_recycler, container, false);
 
-        mRecyclerView = (RecyclerView) v.findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view);
 
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
-        mRecyclerView.setLayoutManager(llm);
+        recyclerView.setLayoutManager(llm);
 
-        mRecyclerView.setAdapter(mAdapter);
+        recyclerView.setAdapter(mAdapter);
 
-        FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
-        fab.attachToRecyclerView(mRecyclerView);
 
         return v;
     }
