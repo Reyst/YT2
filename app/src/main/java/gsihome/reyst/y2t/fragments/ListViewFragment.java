@@ -1,16 +1,22 @@
 package gsihome.reyst.y2t.fragments;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.ListViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ListAdapter;
 
 import java.util.List;
 
 import gsihome.reyst.y2t.R;
+import gsihome.reyst.y2t.activities.FloatingActionButtonOwner;
 import gsihome.reyst.y2t.activities.Invoker;
 import gsihome.reyst.y2t.adapters.LVAdapter;
 import gsihome.reyst.y2t.data.DataUtil;
@@ -62,6 +68,30 @@ public class ListViewFragment extends Fragment {
         listView.setAdapter(mAdapter);
 
         listView.setOnItemClickListener(mInvoker);
+
+        Activity activity = getActivity();
+        if (activity instanceof FloatingActionButtonOwner) {
+            final FloatingActionButton fab = ((FloatingActionButtonOwner) activity).getFloatingActionButton();
+            if (fab != null) {
+                listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+                    private int mLastFirstVisibleItem = 0;
+                    @Override
+                    public void onScrollStateChanged(AbsListView view, int scrollState) {
+                    }
+
+                    @Override
+                    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                        int fabVisibility = fab.getVisibility();
+                        if (firstVisibleItem > mLastFirstVisibleItem && fabVisibility == View.VISIBLE) {
+                            fab.hide();
+                        } else if (firstVisibleItem < mLastFirstVisibleItem && fabVisibility == View.GONE) {
+                            fab.show();
+                        }
+                        mLastFirstVisibleItem = firstVisibleItem;
+                    }
+                });
+            }
+        }
 
         return v;
     }

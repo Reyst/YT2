@@ -1,6 +1,7 @@
 package gsihome.reyst.y2t.activities;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -24,11 +25,13 @@ import gsihome.reyst.y2t.fragments.ListViewFragment;
 import gsihome.reyst.y2t.fragments.RecyclerViewFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, FloatingActionButtonOwner {
 
     private List<Fragment> mFragments;
     private List<String> mFragmentNames;
     private DrawerLayout mDrawer;
+
+    private FloatingActionButton mFab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +52,12 @@ public class MainActivity extends AppCompatActivity
 
         initFragments();
         initViewPager();
+        initFab();
 
+    }
+
+    private void initFab() {
+        mFab = (FloatingActionButton) findViewById(R.id.fab);
     }
 
     private void initFragments() {
@@ -146,5 +154,10 @@ public class MainActivity extends AppCompatActivity
 
         mDrawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public FloatingActionButton getFloatingActionButton() {
+        return mFab;
     }
 }
